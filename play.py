@@ -19,7 +19,6 @@ GPIO.setup(BUTTON_PIN_4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 def play_video(player, media):
     # You need to call "set_media()" to (re)load a video before playing it
-
     player.set_media(media)
     player.play()
 
@@ -51,7 +50,7 @@ def main():
 
         elif not GPIO.input(BUTTON_PIN_3):
             if not current_video == video3:
-                current_video = video4
+                current_video = video3
                 play_video(player, current_video)
 
         elif not GPIO.input(BUTTON_PIN_4):
