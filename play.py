@@ -5,6 +5,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__file__)
 
+# Setup the raspberry pi pins
 BUTTON_PIN_1 = 40
 BUTTON_PIN_2 = 38
 BUTTON_PIN_3 = 36
@@ -18,15 +19,25 @@ GPIO.setup(BUTTON_PIN_4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 
 def play_video(player, media):
+    """
+    Play the selected video
+    :param player: vlc player instance
+    :param media: video to play
+    :return:
+    """
     # You need to call "set_media()" to (re)load a video before playing it
     player.set_media(media)
     player.play()
 
 def main():
+    """
+    Main loop to play each video
+    :return: Never
+    """
     instance = vlc.Instance()
     player = instance.media_player_new()
 
-    # Create libVLC objects representing the two videos
+    # Create libVLC objects representing each video
     video1 = vlc.Media("./videos/big_buck_bunny_480p_10mb.mp4")
     video2 = vlc.Media("./videos/Caminandes_Trailer-1080p.mp4")
     video3 = vlc.Media("./videos/The_End.mp4")
@@ -38,6 +49,8 @@ def main():
 
     # TODO: Add some error handling or at least a proper Ctrl-C handler
     while True:
+
+        # See which button was pressed and the right video
         if not GPIO.input(BUTTON_PIN_1):
             if not current_video == video1:
                 current_video = video1
