@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import vlc
 import RPi.GPIO as GPIO
 
@@ -34,7 +36,8 @@ def main():
     Main loop to play each video
     :return: Never
     """
-    instance = vlc.Instance()
+    # Set up a player instance. Suppress lots of log messages
+    instance = vlc.Instance("--verbose=-1")
     player = instance.media_player_new()
 
     # Create libVLC objects representing each video
