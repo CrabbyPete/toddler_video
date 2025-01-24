@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import os
 import vlc
 import RPi.GPIO as GPIO
 
@@ -12,6 +12,8 @@ BUTTON_PIN_1 = 40
 BUTTON_PIN_2 = 38
 BUTTON_PIN_3 = 36
 BUTTON_PIN_4 = 32
+
+HOME = os.path.abspath(__file__)
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(BUTTON_PIN_1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -41,10 +43,10 @@ def main():
     player = instance.media_player_new()
 
     # Create libVLC objects representing each video
-    video1 = vlc.Media("./videos/big_buck_bunny_480p_10mb.mp4")
-    video2 = vlc.Media("./videos/Caminandes_Trailer-1080p.mp4")
-    video3 = vlc.Media("./videos/The_End.mp4")
-    video4 = vlc.Media("./videos/andre_wally.mp4")
+    video1 = vlc.Media(os.path.join(HOME,"videos/big_buck_bunny_480p_10mb.mp4"))
+    video2 = vlc.Media(os.path.join(HOME,"videos/Caminandes_Trailer-1080p.mp4"))
+    video3 = vlc.Media(os.path.join(HOME,"videos/The_End.mp4"))
+    video4 = vlc.Media(os.path.join(HOME,"videos/andre_wally.mp4"))
 
     # Start the player for the first time
     play_video(player, video1)
