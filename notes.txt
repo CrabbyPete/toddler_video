@@ -1,0 +1,5 @@
+Playing audio on HDMI on Raspberry Pi4 with Bookworm 64 does not work
+Make sure you use raspi-config to set System->Audio
+aplay -l shows audio devices
+cvlc  --alsa-audio-device hw:2,0 video.mp4
+add the overlay in config.txt if using a Raspberry Pi4, then raspi-config
