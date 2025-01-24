@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import os
 import vlc
+import pathlib
 import RPi.GPIO as GPIO
 
 import logging
@@ -13,7 +13,7 @@ BUTTON_PIN_2 = 38
 BUTTON_PIN_3 = 36
 BUTTON_PIN_4 = 32
 
-HOME = os.path.abspath(__file__)
+HOME = pathlib.Path().resolve()
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(BUTTON_PIN_1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
