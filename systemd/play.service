@@ -1,0 +1,13 @@
+
+[Unit]
+Description=Start the video player
+
+[Service]
+WorkingDirectory=/home/pi/toddler_video
+ExecStart=/usr/local/bin/python3 /home/pi/toddler_video/play.py
+SyslogIdentifier=SRV_PLAY
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
